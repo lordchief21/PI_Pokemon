@@ -7,9 +7,6 @@ const routes = require('./routes/index.js');
 require('./db.js');
 
 const server = express();
-
-s
-
 server.name = 'API';
 
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
