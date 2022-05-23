@@ -33,4 +33,3 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
 
 module.exports = server;
 
-SSS
