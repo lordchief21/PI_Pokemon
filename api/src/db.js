@@ -30,10 +30,37 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Pokemon } = sequelize.models;
+const { Pokemon, Types } = sequelize.models;
 
 // Aca vendrian las relaciones
-// Product.hasMany(Reviews);
+Pokemon.belongsToMany(Types, {through: 'pokemon_type'});
+Types.belongsToMany(Pokemon, {through: 'pokemon_type'});
+
+// Este espacio es para testear mi DB
+// sequelize.sync({force: false})
+// .then( async() => {
+//   const poke1 = await Pokemon.create({
+//     name: "Frodo",
+//     health: 5000,
+//     strength: 8000,
+//     defense: 10,
+//     speed: 150,
+//     heigth: 800,
+//     weigth: 8000,
+
+//   });
+//   const poke2 = await Pokemon.create({
+//     name: "Smeagol",
+//     health: 6000,
+//     strength: 9000,
+//     defense: 40,
+//     speed: 250,
+//     heigth: 900,
+//     weigth: 3000,
+
+//   })
+//   console.log("Pokemon creado")
+// })
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
