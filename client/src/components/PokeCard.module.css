@@ -1,0 +1,48 @@
+.movieCard {
+    list-style: none;
+    
+    /* border: 1px solid red; */
+    display: inline-block;
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5%;
+    color: rgb(255, 255, 255);
+    width: max-content;
+    height: 550px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(255, 255, 255, 0.5) 0px 8px 16px -8px;
+}
+
+
+.movieImage {
+    border-radius: 5%;
+    width: 245px;
+    height: 345px;
+    
+}
+
+
+.movieTitle {
+    position: relative;
+    display: block;
+    top: -80px;
+    background: rgb(2,0,36);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.352) 0%, rgba(0,0,0,1) 35%, rgb(56, 1, 1) 100%);;
+    font-size: 2rem;
+    height: 275px;
+    border-radius: 5%;
+    
+    
+
+}
+
+.movieTitle span {
+    position: absolute;
+    top: 55px;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: large;
+    left: 15px;
+
+    
+    
+}
+

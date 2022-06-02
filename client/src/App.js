@@ -1,10 +1,19 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Spinner} from './components/Spinner'
 import './App.css';
+
+import PokeList from './components/PokeList';
+
 
 function App() {
   return (
-    <div className="App">
-      <h1>Henry Pokemon</h1>
-    </div>
+    <BrowserRouter >
+      <div className="App">
+        <Routes>
+        <Route exact path='/' element={ <PokeList/> }/>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

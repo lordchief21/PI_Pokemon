@@ -1,0 +1,94 @@
+
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    justify-content: center;
+    align-items: center;
+    
+    
+    
+}
+
+.loaderPrueba {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: #333;
+    border-radius: 50%;
+    box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.25),
+    10px 10px 70px rgba(0, 0, 0, 0.25); 
+    border: 2px solid #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+}
+
+.loaderPrueba::before {
+    content: '';
+    position: absolute;
+    inset: 40px;
+    border-radius: 50%;
+    border: 3px dashed #666;
+    box-shadow: inset -5px -5px 25px rgba(0, 0, 0, 0.25),
+    inset -5px -5px 35px rgba(0, 0, 0, 0.25) ;
+    z-index: 11;
+}
+
+.loaderPrueba::after {
+    content: '';
+    position: absolute;
+    
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px dashed #666;
+    box-shadow: inset -5px -5px 25px rgba(0, 0, 0, 0.25),
+    inset -5px -5px 35px rgba(0, 0, 0, 0.25) ;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 11;
+}
+
+.loaderPrueba span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    background: transparent;
+    animation: animate 2s linear infinite;
+    transform-origin: top left;
+    overflow: hidden;
+   
+
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+.loader span::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    transform-origin: top left;
+    transform: rotate(35deg);
+    filter: blur(50px) drop-shadow(50px 50px 50px #f00) ;
+    opacity: 0.75;
+}
+
