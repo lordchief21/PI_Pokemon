@@ -44,6 +44,11 @@ module.exports = (sequelize) => {
     weight: {
       type: DataTypes.INTEGER
     },
+
+    image: {
+      type: DataTypes.TEXT
+    },
+    
     createdInDatabase: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

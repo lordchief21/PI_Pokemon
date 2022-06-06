@@ -13,18 +13,19 @@ async function getApiPokemons ()  {
 
             let propPoke = (await axios(o.url)).data
             return  {
-                id: propPoke.id,
-                name: propPoke.name,
-                health: propPoke.stats[0].base_stat,
-                strength: propPoke.stats[1].base_stat,
-                defense: propPoke.stats[2].base_stat,
-                speed: propPoke.stats[5].base_stat,
+                id:propPoke.id,
+                name:propPoke.name,
+                health:propPoke.stats[0].base_stat,
+                strength:propPoke.stats[1].base_stat,
+                defense:propPoke.stats[2].base_stat,
+                speed:propPoke.stats[5].base_stat,
                 height:propPoke.height,
                 weight:propPoke.weight,
-                types: propPoke.types.map(e => e.type.name)
+                types:propPoke.types.map(e => e.type.name),
+                image:propPoke.sprites.other.dream_world.front_default,
                 
              }
-
+             
 
         }))
 
