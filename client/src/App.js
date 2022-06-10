@@ -3,6 +3,7 @@ import { Spinner} from './components/Spinner'
 import './App.css';
 
 import PokeList from './components/PokeList';
+import PokeCreate from './components/PokeCreate';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <div className="App">
         <Routes>
         <Route exact path='/' element={ <PokeList/> }/>
+        <Route exact path='/pokeCreate' element={<PokeCreate />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,4 +1,4 @@
-const {Pokemon, Types} = require('../db');
+const {Pokemons, DbTypes} = require('../db');
 const axios = require('axios');
 
 
@@ -36,26 +36,37 @@ async function getApiPokemons ()  {
 }      
 
 async function getDbPokemons() {
-    return await Pokemon.findAll({
+
+
+    let pokeDb = await DbTypes.findOne({
         include:{
-            model: Types,
+            model: Pokemons,
             attributes: ["name"],
             through: {
                 attributes: []
             }
         }
     })
+    
+    return pokeDb
+    
 };
+
+
+
+
 
 
 async function getAllPokemons() {
     const pokemonApi = await getApiPokemons();
     const pokemonDb = await getDbPokemons();
     const PokemonTotal = await pokemonApi.concat(pokemonDb);
+    console.log("Este es pokemonTotal" , PokemonTotal)
     return PokemonTotal
 }
 
 
 module.exports = {
-    getAllPokemons
+    getAllPokemons,
+    
 }

@@ -32,7 +32,7 @@ export default function NavBar() {
     <div>
         <div>
             <a href="#">Home</a>
-            <a href="#">PokeDetalles</a>
+            <a href="/pokeCreate">PokeDetalles</a>
         </div>
 
 

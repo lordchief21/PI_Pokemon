@@ -22,9 +22,9 @@ export default function rootReducer(state= initialState, action){
                 types: action.payload
             };
 
-        case 'CREATE_POKEMON':
+        case 'POST_POKEMON':
             return {
-                ...state
+                ...state,
             }
 
         case 'FILTER_BY_TYPE':

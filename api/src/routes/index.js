@@ -1,14 +1,16 @@
-const { Router } = require('express');
+const express = require('express');
 const {Pokemon, Types} = require('../db');
 const axios = require('axios');
-const {getAllPokemons} = require('../controllers/pokemonController')
+const {getAllPokemons} = require('../controllers/pokemonController');
+const {getTypesPoke} = require('../controllers/dbTypesController');
+
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
 
 
-const router = Router();
+const router = express();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
@@ -39,57 +41,23 @@ router.get('/pokemons/:idPokemon', async (req, res) => {
   
 
 router.get('/type', async ( req, res) => {
-    const typePokemonApi = (await axios('https://pokeapi.co/api/v2/type')).data.results;
-    // console.log(typePokemonApi)
-    const typesPokemon= typePokemonApi.map(t => t.name);
-    console.log(typesPokemon)
-
-    typesPokemon.forEach(t => {
-        Types.findOrCreate({
-            where: {name: t}
-
-        })
-    })
-
-    const uploadDbTypes = await Types.findAll();
-
-    res.send(uploadDbTypes)
+   
+    const types = await getTypesPoke();
+    res.send(types)
 
 
 });
 
-router.post('/pokemons', async (req, res) => {
+router.post('/pokemons', async (req, res, next) => {
+    const name = req.body.name;
+
     
-    // Declaramos lo que recibiremos del body
-    let {
-        name,
-        health,
-        strength,
-        defense,
-        speed,
-        height,
-        weight,
-        type,
-        createdInDatabase
 
-    } = req.body;
-
-    //Creamos el Pokemón en la base de datos (OJO: SABER QUE EL TYPE ESTA RELACIONADA Y SE ENCUENTRA EN OTRA DB)
-
-    let pokemonCreated = await Pokemon.create ({name, health, strength, defense, speed, height, weight, type, createdInDatabase});
-
-    //Aqui posteamos el "type" que tenemos relacionado
-
-    let typeIndDb = await Types.findAll({where: {name: type} });
-    
-    
-    pokemonCreated.addTypes(typeIndDb);
-    res.send('Un nuevo Pokemon ha nacido! ');
 })
 
 
 
-// router.get(`/pokemons/${id}`, async(req, res))
+
 
 
 module.exports = router;

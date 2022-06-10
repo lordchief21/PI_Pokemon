@@ -23,13 +23,29 @@ export function getTypes() {
     }
 }
 
-export function postPokemon (payload) {
-    return async function(dispatch) {
-        const postCall = await axios.post('http://localhost:3001/pokemons', payload);
-        console.log(postCall)
-        return postCall
-    };
-}
+// export function postPokemon(payload) {
+//     return  async function (dispatch) {
+//         try {
+//             var postCall =  await axios.post('http://localhost:3001/pokemons',payload);
+//             console.log(postCall)
+//             return postCall
+//         } catch (error) {
+//             console.alert(error)
+//         }
+       
+//     };
+// }
+
+export function newPokemon(pokemon) { return async function (dispatch) {
+    try {
+      const res = await axios.post("http://localhost:3001/pokemons", pokemon);
+      dispatch({type: 'POST_POKEMON' , payload: res.data}, alert("POKEMON CREATED"));
+    } catch (err) {
+      alert("ERROR Could not create the Pokemon");
+    }
+  }; 
+
+};
 
 
 
